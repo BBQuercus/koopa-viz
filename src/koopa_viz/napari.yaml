@@ -2,47 +2,9 @@ name: koopa-viz
 display_name: Koopa
 contributions:
   commands:
-    - id: koopa-viz.get_reader
-      python_name: koopa_viz._reader:napari_get_reader
-      title: Open data with Koopa
-    - id: koopa-viz.write_multiple
-      python_name: koopa_viz._writer:write_multiple
-      title: Save multi-layer data with Koopa
-    - id: koopa-viz.write_single_image
-      python_name: koopa_viz._writer:write_single_image
-      title: Save image data with Koopa
-    - id: koopa-viz.make_sample_data
-      python_name: koopa_viz._sample_data:make_sample_data
-      title: Load sample data from Koopa
     - id: koopa-viz.make_qwidget
-      python_name: koopa_viz._widget:ExampleQWidget
-      title: Make example QWidget
-    - id: koopa-viz.make_magic_widget
-      python_name: koopa_viz._widget:example_magic_widget
-      title: Make example magic widget
-    - id: koopa-viz.make_func_widget
-      python_name: koopa_viz._widget:example_function_widget
-      title: Make example function widget
-  readers:
-    - command: koopa-viz.get_reader
-      accepts_directories: false
-      filename_patterns: ['*.npy']
-  writers:
-    - command: koopa-viz.write_multiple
-      layer_types: ['image*','labels*']
-      filename_extensions: []
-    - command: koopa-viz.write_single_image
-      layer_types: ['image']
-      filename_extensions: ['.npy']
-  sample_data:
-    - command: koopa-viz.make_sample_data
-      display_name: Koopa
-      key: unique_id.1
+      title: Visualize koopa analysis directories
+      python_name: koopa_viz._widget:KoopaWidget
   widgets:
     - command: koopa-viz.make_qwidget
-      display_name: Example QWidget
-    - command: koopa-viz.make_magic_widget
-      display_name: Example Magic Widget
-    - command: koopa-viz.make_func_widget
-      autogenerate: true
-      display_name: Example Function Widget
+      display_name: Koopa Widget
