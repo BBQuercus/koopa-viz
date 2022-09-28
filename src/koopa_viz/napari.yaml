@@ -7,4 +7,4 @@ contributions:
       python_name: koopa_viz._widget:KoopaWidget
   widgets:
     - command: koopa-viz.make_qwidget
-      display_name: Koopa Widget
+      display_name: Koopa

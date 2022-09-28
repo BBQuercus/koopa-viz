@@ -11,6 +11,12 @@ Vizualization plugin for koopa image analysis
 
 This [napari] plugin was generated with [Cookiecutter] using [@napari]'s [cookiecutter-napari-plugin] template.
 
+## TODO
+
+* Add visualization support for 2D/3D colocalization
+* Add option to view alignment step
+* Add documentation on formatting and limitations
+
 ## Installation
 
 You can install `koopa-viz` via [pip]:
@@ -21,15 +27,9 @@ To install latest development version :
 
     pip install git+https://github.com/bbquercus/koopa-viz.git
 
-## Contributing
-
-Contributions are very welcome. Tests can be run with [tox], please ensure
-the coverage at least stays the same before you submit a pull request.
-
 ## License
 
-Distributed under the terms of the [MIT] license,
-"koopa-viz" is free and open source software
+Distributed under the terms of the [MIT] license, "koopa-viz" is free and open source software
 
 ## Issues
 
@@ -40,5 +40,4 @@ If you encounter any problems, please [file an issue] along with a detailed desc
 [@napari]: https://github.com/napari
 [MIT]: http://opensource.org/licenses/MIT
 [file an issue]: https://github.com/bbquercus/koopa-viz/issues
-[tox]: https://tox.readthedocs.io/en/latest/
 [pip]: https://pypi.org/project/pip/
