@@ -379,37 +379,48 @@ class KoopaWidget(QWidget):
                 f"{self.name}.parq",
             )
             df = pd.read_parquet(fname)
-
-            df_coloc = df[(df["coloc_particle"].isna()) & (df["channel"] == i)]
-            df_empty = df[
-                (~df["coloc_particle"].isna()) & (df["channel"] == j)
-            ]
+            df_coloc = df[df["channel"] == i]
+            df_empty = df[df["channel"] == j]
 
             if self.do_timeseries:
+                df_coloc = df_coloc.loc[
+                    df_coloc["coloc_particle"].isna(), self.track_cols
+                ]
+                df_empty = df_empty.loc[
+                    ~df_empty["coloc_particle"].isna(), self.track_cols
+                ]
                 self.viewer.add_tracks(
-                    df_coloc[self.track_cols],
+                    df_coloc,
                     name=f"Track {i}-{j} Coloc",
                     colormap="red",
                     **self.track_params,
                 )
                 self.viewer.add_tracks(
-                    df_empty[self.track_cols],
+                    df_empty,
                     name=f"Track {i}-{j} Empty",
                     colormap="blue",
                     **self.track_params,
                 )
             else:
+                df_coloc = df_coloc.loc[
+                    df_coloc["coloc_particle"] != 0, self.spots_cols
+                ]
+                df_empty = df_empty.loc[
+                    df_empty["coloc_particle"] == 0, self.spots_cols
+                ]
+                bland_point_params = self.point_params.copy()
+                bland_point_params.pop("face_color")
                 self.viewer.add_points(
-                    df_coloc[self.spots_cols],
+                    df_coloc,
                     name=f"Detection {i}-{j} Coloc",
-                    colormap="red",
-                    **self.point_params,
+                    face_color="red",
+                    **bland_point_params,
                 )
                 self.viewer.add_points(
-                    df_empty[self.spots_cols],
+                    df_empty,
                     name=f"Detection {i}-{j} Empty",
-                    colormap="blue",
-                    **self.point_params,
+                    face_color="blue",
+                    **bland_point_params,
                 )
 
     def hide_layers(self):
